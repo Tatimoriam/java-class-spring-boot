@@ -1,0 +1,41 @@
+// Criar usuario
+###
+POST http://localhost:8080/users/
+content-type: application/json
+
+{
+    "name": "Teste",
+    "username": "testename",
+    "password": "12345"
+}
+
+// Criar tarefa para usuario
+###
+POST http://localhost:8080/tasks/
+content-type: application/json
+Authorization: Basic testename:12345
+
+{
+    "description": "Tarefa",
+    "title": "Fazer algo",
+    "priority": "Alta",
+    "startAt": "2023-10-14T12:30:00",
+    "endAt": "2023-10-14T15:35:00",
+    "idUser": "cb13c15f-49e7-4c16-9c1a-87d6ae22fbac"
+}
+
+// Buscar lista de tarefas de um usuario
+###
+GET http://localhost:8080/tasks/
+Authorization: Basic testename:12345
+
+// Atualizar tarefas de um usuario
+###
+PUT http://localhost:8080/tasks/c66a3d18-fec5-450f-838f-ff86e085d2be
+content-type: application/json
+Authorization: Basic testename:12345
+
+{
+    "title": "Mudança de titulo",
+    "priority": "Média"
+}
